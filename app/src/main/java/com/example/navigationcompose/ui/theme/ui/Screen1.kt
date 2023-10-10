@@ -21,14 +21,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.example.navigationcompose.model.MyViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
-fun Screen1(navController: NavController) {
-   var name by remember { mutableStateOf("Jaylen Clarkson") }
-    var age by remember { mutableStateOf("25") }
-    var schoolName by remember { mutableStateOf("University of California") }
+fun Screen1(navController: NavController, viewModel: MyViewModel) {
+    val state by viewModel.stateFlow.collectAsStateWithLifecycle()
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -40,19 +41,31 @@ fun Screen1(navController: NavController) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Text(text = "My name is: $name")
+        Text(
+            text =
+            "${state.name}"
+        )
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Text(text = "$name is $age years")
+        Text(
+            text = "${state.age}"
+        )
 
         Spacer(modifier = Modifier.height(20.dp))
-        Text(text = "I study in the $schoolName")
+        Text(
+            text =
+            "${state.schoolName}"
+        )
 
-
+        Spacer(modifier = Modifier.height(40.dp))
 
         Button(
-            onClick = { navController.navigate("screen_2/ $name/$age") },
+            onClick = {
+                navController.navigate("screen_2"
+
+                )
+                      },
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.onPrimaryContainer),
             shape = RoundedCornerShape(12.dp)
         ) {

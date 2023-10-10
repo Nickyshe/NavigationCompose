@@ -22,55 +22,66 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.navigationcompose.model.Details
+import com.example.navigationcompose.model.MyViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Screen2(navController: NavController) {
+fun Screen2(navController: NavController, viewModel: MyViewModel) {
 
-
-
-
-    var name by remember { mutableStateOf("Jaylen Clarkson") }
-    var age by remember { mutableStateOf("25") }
-    var schoolName by remember { mutableStateOf("University of California") }
+    var name by remember { mutableStateOf("") }
+    var age by remember { mutableStateOf("") }
+    var schoolName by remember { mutableStateOf("") }
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Screen 1 ", fontSize = 30.sp
+            text = "Screen 2 ", fontSize = 30.sp
         )
 
         Spacer(modifier = Modifier.height(20.dp))
         OutlinedTextField(value = name, onValueChange = {
             name = it
-        }, placeholder = { Text(text = "Enter your name") }
+        }, placeholder = { Text(text = "Enter your name") },
+            maxLines = 1
 
         )
 
         Spacer(modifier = Modifier.height(20.dp))
         OutlinedTextField(value = age, onValueChange = {
             age = it
-        }, placeholder = { Text(text = "Enter your age") }
+        }, placeholder = { Text(text = "Enter your age") },
+            maxLines = 1
 
         )
 
         Spacer(modifier = Modifier.height(20.dp))
         OutlinedTextField(value = schoolName, onValueChange = {
             schoolName = it
-        }, placeholder = { Text(text = "Enter your age") }
+        }, placeholder = { Text(text = "Enter your School name") },
+            maxLines = 1
 
         )
 
 
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(40.dp))
 
 
 
         Button(
-            onClick = { navController.navigate("screen_2/ $name/$age") },
+            onClick = {
+         val details = Details(
+                  name = name,
+                  age = age,
+                  schoolName = schoolName
+              )
+                viewModel.update(details)
+navController.popBackStack()
+
+                      },
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.onPrimaryContainer),
             shape = RoundedCornerShape(12.dp)
         ) {
