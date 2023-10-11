@@ -23,7 +23,9 @@ fun Screen3(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Button(onClick = { navController.navigate("screen_1") },
+        Button(onClick = {
+            navController.navigate("screen_1")
+                         },
             colors = ButtonDefaults.buttonColors(Color.Green),
             shape = RoundedCornerShape(12.dp)
         ) {
