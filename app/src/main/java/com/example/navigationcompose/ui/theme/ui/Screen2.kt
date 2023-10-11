@@ -1,5 +1,6 @@
 package com.example.navigationcompose.ui.theme.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -26,6 +27,7 @@ import com.example.navigationcompose.model.Details
 import com.example.navigationcompose.model.MyViewModel
 
 
+@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Screen2(navController: NavController, viewModel: MyViewModel) {

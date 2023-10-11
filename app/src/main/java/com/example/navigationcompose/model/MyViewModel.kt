@@ -8,11 +8,9 @@ class MyViewModel:ViewModel() {
    private  var _state = MutableStateFlow(
        Details(
            "",
-
            "",
            ""
-
-    ))
+       ))
 
 
     val stateFlow: StateFlow<Details> = _state
