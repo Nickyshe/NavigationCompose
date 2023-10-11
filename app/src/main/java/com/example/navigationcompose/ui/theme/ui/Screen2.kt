@@ -80,7 +80,7 @@ fun Screen2(navController: NavController, viewModel: MyViewModel) {
                   age = age,
                   schoolName = schoolName
               )
-                viewModel.update(details)
+                viewModel.save(details)
 navController.popBackStack()
 
                       },

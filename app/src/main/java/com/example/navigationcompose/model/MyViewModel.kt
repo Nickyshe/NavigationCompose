@@ -14,7 +14,7 @@ class MyViewModel:ViewModel() {
 
 
     val stateFlow: StateFlow<Details> = _state
-    fun update(details: Details) { //this function will update the data passed in screen 2 to screen 1
+    fun save(details: Details) { //this function will update the data passed in screen 2 to screen 1
         _state.value = details
 
 
